@@ -1,6 +1,6 @@
 ---
 - name: Build container with ansible
-  hosts: localhost
+  hosts: all
   tasks:
     - name: stop running container
       command: docker stop first-container
@@ -14,8 +14,16 @@
       command: docker rmi 1st-image
       ignore_errors: yes
 
+    - name: Copy project files to remote server
+      copy:
+        src: /root/first-project/ 
+        dest: /root/first-project/
+
     - name: build docker image from dockerfile
       command: docker build -t my-first-image .
+      args:
+        chdir: /root/first-project/
+
 
     - name: create tag to image
       command: docker tag my-first-image mohamedhmza123/my-first-image:latest
