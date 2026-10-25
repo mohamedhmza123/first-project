@@ -36,7 +36,7 @@ pipeline {
 
         stage('Build & Push Docker Image') {
             steps {
-                sh 'ansible-playbook docker-install.yml'
+                sh 'ansible-playbook -i inventory docker-install.yml'
             }
         }
     }
