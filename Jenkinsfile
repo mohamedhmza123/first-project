@@ -36,7 +36,10 @@ pipeline {
 
         stage('Build & Push Docker Image') {
             steps {
-                sh 'ansible-playbook -i inventory docker-install.yml'
+                sh '''
+                ssh-copy-id root@192.168.1.99      
+                ansible-playbook -i inventory docker-install.yml
+                '''
             }
         }
     }
