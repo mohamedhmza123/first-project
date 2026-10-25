@@ -1,6 +1,6 @@
 ---
 - name: Build container with ansible
-  hosts: localhost
+  hosts: all
   tasks:
     - name: stop running container
       command: docker stop first-container
