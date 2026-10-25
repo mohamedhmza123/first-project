@@ -37,7 +37,10 @@ pipeline {
         stage('Build & Push Docker Image') {
             steps {
                 sh '''
-                ssh-copy-id root@192.168.1.99      
+                 ssh -i /var/lib/jenkins/.ssh/id_ed25519 \
+                -o BatchMode=yes \
+                root@192.168.1.99 \
+                "hostname"
                 ansible-playbook -i inventory docker-install.yml
                 '''
             }
