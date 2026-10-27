@@ -41,7 +41,7 @@ pipeline {
                 -o BatchMode=yes \
                 root@192.168.1.99 \
                 "hostname"
-                ansible-playbook docker-install.yml
+                ansible-playbook -i inventory docker-install.yml
                 '''
             }
         }
